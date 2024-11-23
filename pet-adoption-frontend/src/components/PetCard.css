@@ -1,0 +1,12 @@
+.pet-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  text-align: left;
+}
+
+.pet-card img {
+  width: 100%;
+  border-radius: 8px;
+}

@@ -1,0 +1,47 @@
+.add-pet-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .add-pet-container h2 {
+    text-align: center;
+  }
+  
+  .add-pet-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-pet-container form div {
+    margin-bottom: 15px;
+  }
+  
+  .add-pet-container form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-pet-container form input,
+  .add-pet-container form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-pet-container form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-pet-container form button:hover {
+    background-color: #0056b3;
+  }
