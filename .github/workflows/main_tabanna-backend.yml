@@ -1,7 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-# More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
-
 name: Build and deploy Python app to Azure Web App - Tabanna-backend
 
 on:
@@ -13,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    
     steps:
       - uses: actions/checkout@v4
 
@@ -34,13 +30,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: collect static files
-        run: |
-          cd pet-adoption-backend
-          python manage.py collectstatic --noinput
-          
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      # Remove the Django collectstatic command
+      # - name: collect static files
+      #   run: |
+      #     cd pet-adoption-backend
+      #     python manage.py collectstatic --noinput
 
       - name: Zip artifact for deployment
         run: |
@@ -61,8 +55,6 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -73,18 +65,14 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5E9D931FF631440F879F3022E4A95CBD }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_63711C9497E641D79C25A3372D666B83 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_E8AF8702CA8B47AB989098AECB23FFAB }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
-        id: deploy-to-webapp
         with:
           app-name: 'Tabanna-backend'
           slot-name: 'Production'
-          
+          publish-profile: ${{ secrets.AZUREWEBAPP_PUBLISHPROFILE }}
