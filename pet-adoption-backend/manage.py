@@ -4,7 +4,7 @@ import click
 from flask.cli import FlaskGroup
 from azure.storage.blob import BlobServiceClient
 from app import create_app, db
-from azure_deployment import AzureConfig
+# from azure_deployment import AzureConfig
 
 def create_cli_app():
     return create_app()
@@ -64,7 +64,7 @@ def collectstatic():
         
         static_folder = os.path.join(app.root_path, 'static')
         
-        for root, dirs, files in os.walk(static_folder):
+        for root, _, files in os.walk(static_folder):
             for file in files:
                 file_path = os.path.join(root, file)
                 blob_path = os.path.relpath(file_path, static_folder)
