@@ -1,6 +1,7 @@
 from datetime import datetime
 from . import db
 from enum import Enum
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class GenderEnum(str, Enum):
     MALE = 'Male'
@@ -31,6 +32,12 @@ class User(db.Model):
     posts = db.relationship('Post', backref='author', lazy=True)
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'))
 
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -51,8 +58,8 @@ class PetCategory(db.Model):
 
 class Pet(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=True)
-    breed = db.Column(db.String(80), nullable=True)
+    name = db.Column(db.String(100), nullable=False)
+    breed = db.Column(db.String(100), nullable=True)
     age = db.Column(db.Integer, nullable=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
     shelter_id = db.Column(db.Integer, db.ForeignKey('shelter.id'), nullable=True)
@@ -60,12 +67,13 @@ class Pet(db.Model):
     species = db.Column(db.String(50), nullable=True)
     gender = db.Column(db.Enum(GenderEnum), nullable=True)
     size = db.Column(db.Enum(SizeEnum), nullable=True)
-    health_status = db.Column(db.Text, nullable=True)
-    is_vaccinated = db.Column(db.Boolean, default=False, nullable=True)
-    is_neutered = db.Column(db.Boolean, default=False, nullable=True)
+    health_status = db.Column(db.String(100), nullable=True)
+    is_vaccinated = db.Column(db.Boolean, nullable=True)
+    is_neutered = db.Column(db.Boolean, nullable=True)
     location_id = db.Column(db.Integer, db.ForeignKey('location.id'), nullable=True)
-    status = db.Column(db.Enum(PetStatusEnum), default=PetStatusEnum.AVAILABLE, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=True)
+    status = db.Column(db.Enum(PetStatusEnum), default=PetStatusEnum.AVAILABLE)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    image = db.Column(db.String(255), nullable=True)  # Add this line
     posts = db.relationship('Post', backref='pet', lazy=True)
 
     def to_dict(self):
@@ -76,15 +84,17 @@ class Pet(db.Model):
             'age': self.age,
             'owner_id': self.owner_id,
             'shelter_id': self.shelter_id,
+            'category_id': self.category_id,
             'species': self.species,
-            'gender': self.gender.value if self.gender else None,
-            'size': self.size.value if self.size else None,
+            'gender': self.gender.name if self.gender else None,
+            'size': self.size.name if self.size else None,
             'health_status': self.health_status,
             'is_vaccinated': self.is_vaccinated,
             'is_neutered': self.is_neutered,
-            'status': self.status.value if self.status else None,
-            'created_at': self.created_at,
-            'category_id': self.category_id
+            'location_id': self.location_id,
+            'status': self.status.name,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
+            'image': self.image  # Add this line
         }
 
 class Shelter(db.Model):

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './PetList.css';  // Import the CSS file
+import './PetList.css';
 
 interface Pet {
   id: number;
   name: string;
+  image?: string;
+  breed?: string;
+  age?: number;
   // Add other properties as needed
 }
 
@@ -23,16 +26,25 @@ const PetList: React.FC = () => {
 
   return (
     <div className="pet-list-container">
-      <h2>Available Pets</h2>
-      <ul className="pet-list">
+      <h2 className="pet-list-title">Available Pets</h2>
+      <div className="pet-grid">
         {pets.map(pet => (
-          <li key={pet.id} className="pet-item">
-            <Link to={`/pets/${pet.id}`} className="pet-link">
-              <div className="pet-name">{pet.name}</div>
-            </Link>
-          </li>
+          <Link to={`/pets/${pet.id}`} key={pet.id} className="pet-card">
+            <div className="pet-card-image">
+              <img 
+                src={pet.image ? `/uploads/${pet.image}` : '/uploads/default-pet-image.jpg'} 
+                alt={pet.name}
+                loading="lazy"
+              />
+            </div>
+            <div className="pet-card-content">
+              <h3 className="pet-card-name">{pet.name}</h3>
+              {pet.breed && <p className="pet-card-breed">{pet.breed}</p>}
+              {pet.age && <p className="pet-card-age">{pet.age} years old</p>}
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

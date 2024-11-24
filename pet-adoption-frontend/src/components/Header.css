@@ -1,5 +1,48 @@
+:root {
+  --header-bg-color: #282c34;
+  --header-text-color: white;
+  --header-hover-color: #61dafb;
+  --header-padding: 20px;
+  --header-font-size: 1.5rem;
+  --header-link-font-size: 1rem;
+  --header-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --header-transition: color 0.3s ease;
+  --header-title-font-family: 'Arial', sans-serif;
+  --header-title-font-weight: bold;
+  --header-title-letter-spacing: 2px;
+}
+
 .header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
+  background-color: var(--header-bg-color);
+  padding: var(--header-padding);
+  color: var(--header-text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--header-box-shadow);
+}
+
+.header-title {
+  font-size: var(--header-font-size);
+  margin: 0;
+  font-family: var(--header-title-font-family);
+  font-weight: var(--header-title-font-weight);
+  letter-spacing: var(--header-title-letter-spacing);
+}
+
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-link {
+  color: var(--header-text-color);
+  text-decoration: none;
+  font-size: var(--header-link-font-size);
+  transition: var(--header-transition);
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.header-link:hover {
+  color: var(--header-hover-color);
 }

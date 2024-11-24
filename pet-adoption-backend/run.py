@@ -27,12 +27,14 @@ def populate_database():
         pet1 = Pet(
             name="Buddy", breed="Golden Retriever", age=3, owner=user1, shelter=shelter1, category=category1,
             species="Dog", gender=GenderEnum.MALE, size=SizeEnum.LARGE, health_status="Healthy",
-            is_vaccinated=True, is_neutered=True, location=location1, status=PetStatusEnum.AVAILABLE
+            is_vaccinated=True, is_neutered=True, location=location1, status=PetStatusEnum.AVAILABLE,
+            image='default-pet-image.jpg'  # Add this line
         )
         pet2 = Pet(
             name="Mittens", breed="Siamese", age=2, owner=user2, shelter=shelter2, category=category2,
             species="Cat", gender=GenderEnum.FEMALE, size=SizeEnum.SMALL, health_status="Healthy",
-            is_vaccinated=True, is_neutered=False, location=location2, status=PetStatusEnum.AVAILABLE
+            is_vaccinated=True, is_neutered=False, location=location2, status=PetStatusEnum.AVAILABLE,
+            image='default-pet-image.jpg'  # Add this line
         )
 
         # Add to session and commit
@@ -40,5 +42,5 @@ def populate_database():
         db.session.commit()
 
 if __name__ == '__main__':
-    populate_database()
+    # populate_database()
     app.run(debug=True)
