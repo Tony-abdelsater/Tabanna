@@ -24,6 +24,8 @@ werkzeug
 # Azure
 azure-storage-blob==12.19.0
 azure-identity==1.15.0 
+azure_deployment
+
 # Utilities
 email-validator==2.1.0.post1
 python-dateutil==2.8.2
