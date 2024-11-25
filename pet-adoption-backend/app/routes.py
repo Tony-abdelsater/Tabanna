@@ -6,7 +6,7 @@ from . import db
 from .auth import token_required
 from datetime import datetime
 
-UPLOAD_FOLDER = r"C:\Users\user\Desktop\Tabanna\pet-adoption-platform\pet-adoption-backend\uploads"
+UPLOAD_FOLDER = r".\uploads"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 def allowed_file(filename):
