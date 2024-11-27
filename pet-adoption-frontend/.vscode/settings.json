@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/0a2e5bd6-92cc-42e7-a8a4-cd681cc0bf24/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/pet-adoption-frontend-1",
+    "appService.deploySubpath": "."
+}

@@ -10,10 +10,10 @@ export interface User {
   // Add other user properties as needed
 }
 
-interface AuthState {
-  isAuthenticated: boolean;
-  token: string | null;
-}
+// interface AuthState {
+//   isAuthenticated: boolean;
+//   token: string | null;
+// }
 
 const UserProfile: React.FC = () => {
   const navigate = useNavigate();
