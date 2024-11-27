@@ -55,14 +55,43 @@
 .status-available {
   background-color: #def7ec;
   color: #03543f;
+  display: none;
+}
+
+.pet-card:hover .status-available {
+  display: block;
 }
 
 .status-pending {
   background-color: #fef3c7;
   color: #92400e;
+  display: none;
+}
+
+.pet-card:hover .status-pending {
+  display: block;
 }
 
 .status-adopted {
   background-color: #dbeafe;
   color: #1e40af;
+  display: none;
+}
+
+.pet-card:hover .status-adopted {
+  display: block;
+}
+
+.pet-card-wrapper button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #3182ce;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pet-card-wrapper button:hover {
+  background-color: #2b6cb0;
 }

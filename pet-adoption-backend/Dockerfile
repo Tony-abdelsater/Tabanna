@@ -12,6 +12,15 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
+# Create the uploads directory
+RUN mkdir -p /app/uploads
+
+# Copy the default image to the uploads directory
+COPY uploads/default-pet-image.jpg /app/uploads/default-pet-image.jpg
+
+# Set proper permissions
+RUN chown -R www-data:www-data /app/uploads
+
 # Copy the current directory contents into the container at /app
 COPY . /app
 

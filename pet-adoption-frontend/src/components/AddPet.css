@@ -66,3 +66,23 @@
 .add-pet-container form button:hover {
   background-color: #0056b3;
 }
+
+@media (max-width: 600px) {
+    .add-pet-container {
+        padding: 10px;
+    }
+
+    .add-pet-container h2 {
+        font-size: 20px;
+    }
+
+    .add-pet-container form input,
+    .add-pet-container form textarea {
+        padding: 8px;
+    }
+
+    .add-pet-container form button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

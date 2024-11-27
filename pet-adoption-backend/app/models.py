@@ -94,7 +94,7 @@ class Pet(db.Model):
             'location_id': self.location_id,
             'status': self.status.name,
             'created_at': self.created_at.isoformat() if self.created_at else None,
-            'image': self.image  # Add this line
+            'image': self.image
         }
 
 class Shelter(db.Model):

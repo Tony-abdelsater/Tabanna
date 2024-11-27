@@ -18,7 +18,7 @@
   color: var(--header-text-color);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Ensure items are aligned in the middle */
   box-shadow: var(--header-box-shadow);
 }
 
@@ -32,6 +32,7 @@
 
 .header-nav {
   display: flex;
+  align-items: center; /* Ensure items are aligned in the middle */
   gap: 20px;
 }
 
@@ -45,4 +46,41 @@
 
 .header-link:hover {
   color: var(--header-hover-color);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--header-text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; /* Ensure it fits the whole screen */
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .header-nav.open {
+    display: flex;
+  }
+
+  .header-link {
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
 }

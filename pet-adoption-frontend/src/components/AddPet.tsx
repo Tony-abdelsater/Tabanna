@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AddPet.css';
+import { AuthContext } from '../context/AuthContext';
 
 const AddPet: React.FC = () => {
+  const navigate = useNavigate();
+  const authContext = useContext(AuthContext);
   const [name, setName] = useState('');
   const [breed, setBreed] = useState('');
   const [age, setAge] = useState('');
   const [description, setDescription] = useState('');
-  const [ownerId, setOwnerId] = useState('');
   const [shelterId, setShelterId] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [species, setSpecies] = useState('');
@@ -21,19 +24,17 @@ const AddPet: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append('name', name);
-    if (breed) formData.append('breed', breed);
-    if (age) formData.append('age', age);
-    if (description) formData.append('description', description);
-    if (ownerId) formData.append('owner_id', ownerId);
-    if (shelterId) formData.append('shelter_id', shelterId);
-    if (categoryId) formData.append('category_id', categoryId);
-    if (species) formData.append('species', species);
-    if (gender) formData.append('gender', gender);
-    if (size) formData.append('size', size);
-    if (healthStatus) formData.append('health_status', healthStatus);
+    formData.append('breed', breed);
+    formData.append('age', age);
+    formData.append('description', description);
+    formData.append('shelter_id', shelterId);
+    formData.append('category_id', categoryId);
+    formData.append('species', species);
+    formData.append('gender', gender);
+    formData.append('size', size);
+    formData.append('health_status', healthStatus);
     formData.append('is_vaccinated', isVaccinated.toString());
     formData.append('is_neutered', isNeutered.toString());
     if (locationId) formData.append('location_id', locationId);
@@ -43,19 +44,23 @@ const AddPet: React.FC = () => {
     }
 
     try {
+      const token = localStorage.getItem('authToken');
       const response = await fetch('/api/pets', {
         method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
         body: formData,
       });
 
       if (response.ok) {
+        const newPet = await response.json();
         alert('Pet added successfully!');
         // Reset form fields
         setName('');
         setBreed('');
         setAge('');
         setDescription('');
-        setOwnerId('');
         setShelterId('');
         setCategoryId('');
         setSpecies('');
@@ -65,8 +70,9 @@ const AddPet: React.FC = () => {
         setIsVaccinated(false);
         setIsNeutered(false);
         setLocationId('');
-        setStatus('Available');
+        setStatus('AVAILABLE');
         setImage(null);
+        navigate('/');
       } else {
         alert('Failed to add pet.');
       }
@@ -97,10 +103,6 @@ const AddPet: React.FC = () => {
           <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
         </div>
         <div>
-          <label>Owner ID:</label>
-          <input type="number" value={ownerId} onChange={(e) => setOwnerId(e.target.value)} />
-        </div>
-        <div>
           <label>Shelter ID:</label>
           <input type="number" value={shelterId} onChange={(e) => setShelterId(e.target.value)} />
         </div>
@@ -122,14 +124,14 @@ const AddPet: React.FC = () => {
         </div>
         <div>
           <label>Health Status:</label>
-          <textarea value={healthStatus} onChange={(e) => setHealthStatus(e.target.value)} />
+          <input type="text" value={healthStatus} onChange={(e) => setHealthStatus(e.target.value)} />
         </div>
         <div>
-          <label>Is Vaccinated:</label>
+          <label>Vaccinated:</label>
           <input type="checkbox" checked={isVaccinated} onChange={(e) => setIsVaccinated(e.target.checked)} />
         </div>
         <div>
-          <label>Is Neutered:</label>
+          <label>Neutered:</label>
           <input type="checkbox" checked={isNeutered} onChange={(e) => setIsNeutered(e.target.checked)} />
         </div>
         <div>
