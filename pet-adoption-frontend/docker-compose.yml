@@ -5,4 +5,10 @@ services:
       - "80:80"
     environment:
       - NODE_ENV=production
+    volumes:
+      - .:/app
+      - uploads:/usr/share/nginx/html/uploads
     # ...existing code...
+
+volumes:
+  uploads:

@@ -6,6 +6,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-bottom: 30px; /* Increased margin to add more space at the bottom */
 }
 
 .privacy-policy-container h1 {

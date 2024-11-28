@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PetList from './components/PetList';
 import PetProfile from './components/PetProfile';
 import AddPet from './components/AddPet';
@@ -19,6 +19,8 @@ const App: React.FC = () => {
       <Router>
         <Header />
         <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<PetList />} />
           <Route path="/pets/:id" element={<PetProfile />} />
           <Route path="/add-pet" element={<AddPet />} />
           <Route path="/login" element={<Login />} />
@@ -27,7 +29,6 @@ const App: React.FC = () => {
           <Route path="/donations" element={<Donations />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/" element={<PetList />} />
         </Routes>
         <Footer />
       </Router>

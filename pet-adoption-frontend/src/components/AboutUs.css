@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
+  padding-bottom: 150px; /* Further increased to provide more space from the bottom */
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -57,4 +58,41 @@
   margin-top: 0.5rem;
   font-size: 1rem;
   color: #555;
+}
+
+.team-member:last-child {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 600px) {
+  .about-us-container {
+    padding: 1rem;
+  }
+
+  .team-members {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .team-member img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .team-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-us-container h1 {
+    font-size: 2rem;
+  }
+
+  .about-us-container p {
+    font-size: 1rem;
+  }
+
+  .team-member p {
+    font-size: 0.9rem;
+  }
 }

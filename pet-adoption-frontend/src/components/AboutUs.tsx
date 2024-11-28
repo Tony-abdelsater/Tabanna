@@ -11,7 +11,7 @@ const AboutUs: React.FC = () => {
         <h2>Meet the Team</h2>
         <div className="team-members">
           <div className="team-member">
-            <img src="\image1.jpg" alt="Mada Faddoul" />
+            <img src="/image1.jpg" alt="Mada Faddoul" />
             <p>Mada Faddoul</p>
           </div>
           <div className="team-member">

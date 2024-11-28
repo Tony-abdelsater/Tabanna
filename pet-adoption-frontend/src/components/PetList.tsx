@@ -31,11 +31,10 @@ const PetList: React.FC = () => {
         {pets.map(pet => (
           <Link to={`/pets/${pet.id}`} key={pet.id} className="pet-card">
             <div className="pet-card-image">
-              <img 
-                src={pet.image ? `/uploads/${pet.image}` : '/uploads/default-pet-image.jpg'} 
-                alt={pet.name}
-                loading="lazy"
-              />
+            <img 
+          src={pet.image ? `/uploads/${pet.image}` : '/uploads/default-pet-image.jpg'} 
+          alt={pet.name} 
+        />
             </div>
             <div className="pet-card-content">
               <h3 className="pet-card-name">{pet.name}</h3>

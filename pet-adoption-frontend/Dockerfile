@@ -12,7 +12,7 @@ RUN npm run build
 # Stage 2: Serve the app with Nginx
 FROM nginx:stable-alpine
 
-# Install CA certificatesy
+# Install CA certificates
 RUN apk add --no-cache ca-certificates
 
 # Remove the default Nginx configuration
@@ -20,6 +20,9 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy the custom Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
+
+# Create uploads directory
+RUN mkdir -p /usr/share/nginx/html/uploads
 
 # Copy the React build output to Nginx's html directory
 COPY --from=build /app/build /usr/share/nginx/html

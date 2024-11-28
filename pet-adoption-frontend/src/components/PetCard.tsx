@@ -15,7 +15,12 @@ interface PetCardProps {
 const PetCard: React.FC<PetCardProps> = ({ name, breed, age, image, status, showImage = true, showAge = true, showBreed = true }) => {
   return (
     <div className="pet-card">
-      {showImage && image && <img src={image} alt={name} />}
+      {showImage && (
+        <img 
+          src={image ? `/uploads/${image}` : '/uploads/default-pet-image.jpg'} 
+          alt={name} 
+        />
+      )}
       <h2>{name}</h2>
       {showBreed && breed && <p><strong>Breed:</strong> {breed}</p>}
       {showAge && age && <p><strong>Age:</strong> {age} years</p>}

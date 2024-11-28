@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <p>&copy; 2024 Tabanna</p>
         <nav className="footer-nav">
           <Link to="/about-us">About Us</Link>
-          <Link to="/privacy-policy" >Privacy Policy</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
         </nav>
       </div>
     </footer>

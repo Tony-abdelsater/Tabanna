@@ -1,88 +1,84 @@
 .add-pet-container {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
+  margin: 2rem auto;
+  padding: 2rem;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .add-pet-container h2 {
   text-align: center;
-  color: #333;
-  font-family: 'Arial', sans-serif;
-  font-size: 24px;
-  margin-bottom: 20px;
+  color: #2d3748;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .add-pet-container form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px; /* Increase margin to the bottom */
 }
 
 .add-pet-container form div {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .add-pet-container form label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-  font-family: 'Arial', sans-serif;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
 }
 
 .add-pet-container form input,
-.add-pet-container form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  font-family: 'Arial', sans-serif;
-  font-size: 14px;
-  background-color: #f9f9f9;
+.add-pet-container form textarea,
+.add-pet-container form select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #2d3748;
 }
 
 .add-pet-container form input:focus,
-.add-pet-container form textarea:focus {
-  border-color: #007bff;
+.add-pet-container form textarea:focus,
+.add-pet-container form select:focus {
+  border-color: #3182ce;
   outline: none;
-  background-color: #ffffff;
 }
 
 .add-pet-container form button {
-  padding: 12px;
-  background-color: #007bff;
-  color: white;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: #3182ce;
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1.125rem;
   cursor: pointer;
-  font-family: 'Arial', sans-serif;
-  font-size: 16px;
   transition: background-color 0.3s ease;
 }
 
 .add-pet-container form button:hover {
-  background-color: #0056b3;
+  background-color: #2b6cb0;
 }
 
 @media (max-width: 600px) {
-    .add-pet-container {
-        padding: 10px;
-    }
+  .add-pet-container {
+    padding: 1rem;
+  }
 
-    .add-pet-container h2 {
-        font-size: 20px;
-    }
+  .add-pet-container h2 {
+    font-size: 1.75rem;
+  }
 
-    .add-pet-container form input,
-    .add-pet-container form textarea {
-        padding: 8px;
-    }
+  .add-pet-container form input,
+  .add-pet-container form textarea,
+  .add-pet-container form select {
+    font-size: 0.9rem;
+  }
 
-    .add-pet-container form button {
-        padding: 10px;
-        font-size: 14px;
-    }
+  .add-pet-container form button {
+    font-size: 1rem;
+  }
 }

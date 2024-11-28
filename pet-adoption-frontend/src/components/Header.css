@@ -1,13 +1,13 @@
 :root {
-  --header-bg-color: #282c34;
-  --header-text-color: white;
-  --header-hover-color: #61dafb;
-  --header-padding: 20px;
-  --header-font-size: 1.5rem;
-  --header-link-font-size: 1rem;
-  --header-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --header-bg-color: #283593; /* Updated to a more vibrant blue */
+  --header-text-color: #ffffff; /* White text for contrast */
+  --header-hover-color: #64b5f6; /* Lighter blue for hover effects */
+  --header-padding: 10px 40px; /* Reduced vertical padding from 20px to 10px */
+  --header-font-family: 'Roboto', sans-serif; /* Modern and clean font */
+  --header-title-font-size: 1.8rem; /* Decreased title font size */
+  --header-link-font-size: 1rem; /* Decreased link font size */
+  --header-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
   --header-transition: color 0.3s ease;
-  --header-title-font-family: 'Arial', sans-serif;
   --header-title-font-weight: bold;
   --header-title-letter-spacing: 2px;
 }
@@ -17,35 +17,43 @@
   padding: var(--header-padding);
   color: var(--header-text-color);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensures space between title, nav, and menu toggle */
   align-items: center; /* Ensure items are aligned in the middle */
-  box-shadow: var(--header-box-shadow);
+  box-shadow: var(--header-box-shadow); /* Enhanced shadow for depth */
 }
 
 .header-title {
-  font-size: var(--header-font-size);
+  font-size: var(--header-title-font-size);
   margin: 0;
-  font-family: var(--header-title-font-family);
+  font-family: var(--header-font-family);
   font-weight: var(--header-title-font-weight);
-  letter-spacing: var(--header-title-letter-spacing);
+  letter-spacing: 1.5px; /* Adjusted letter spacing */
+  color: #ffeb3b; /* Changed to a yellow shade for better contrast */
+  text-decoration: none; /* Remove underline from the title */
+  border: none; /* Remove any existing border */
+  background: linear-gradient(90deg, #64b5f6, #1e88e5); /* Add a gradient background */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Make the gradient apply to the text */
 }
 
 .header-nav {
   display: flex;
   align-items: center; /* Ensure items are aligned in the middle */
-  gap: 20px;
+  gap: 30px; /* Increased gap for better spacing between links */
 }
 
 .header-link {
   color: var(--header-text-color);
-  text-decoration: none;
+  text-decoration: none; /* Remove underline from links */
+  font-family: var(--header-font-family);
   font-size: var(--header-link-font-size);
-  transition: var(--header-transition);
+  transition: color 0.3s ease, transform 0.3s ease; /* Added transition effects */
   white-space: nowrap; /* Prevent wrapping */
 }
 
 .header-link:hover {
   color: var(--header-hover-color);
+  transform: scale(1.08); /* Slightly larger scale on hover */
 }
 
 .menu-toggle {
@@ -53,15 +61,20 @@
   background: none;
   border: none;
   color: var(--header-text-color);
-  font-size: 1.5rem;
+  font-size: 2rem; /* Larger menu icon */
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg); /* Rotate icon on hover */
 }
 
 @media (max-width: 600px) {
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%; /* Ensure it fits the whole screen */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .menu-toggle {
@@ -71,16 +84,31 @@
   .header-nav {
     display: none;
     flex-direction: column;
-    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: var(--header-bg-color);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
   .header-nav.open {
-    display: flex;
+    display: flex; /* Ensure this line is present */
+    transform: translateX(0);
+    background: var(--header-bg-color);
+    padding: 20px;
+    border-right: 2px solid #ffffff; /* Added border for distinction */
   }
 
   .header-link {
     padding: 10px 0;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    font-size: 1.2rem; /* Increased font size for better readability on mobile */
   }
 }
